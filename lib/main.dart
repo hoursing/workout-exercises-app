@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:workout_daily/const.dart';
 
 void main() {
@@ -39,9 +40,23 @@ class HomeScreen extends StatelessWidget {
             decoration: BoxDecoration(
               color: Color(0xFFF5CEB8),
               image: DecorationImage(
-                alignment: Alignment.centerLeft,
-                image: AssetImage("assets/imgs/undraw_pilates_gpdb.png")
-                ),
+                  alignment: Alignment.centerLeft,
+                  image: AssetImage("assets/imgs/undraw_pilates_gpdb.png")),
+            ),
+          ),
+          SafeArea(
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    height: 52,
+                    width: 52,
+                    decoration: BoxDecoration(
+                      color: Color(0xFFF2BEA1),
+                      shape: BoxShape.circle,
+                    ),
+                    child: SvgPicture.asset('assets/icons/menu.svg'),
+                  ),
+                ],
             ),
           ),
         ],
