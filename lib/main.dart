@@ -45,19 +45,26 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           SafeArea(
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    height: 52,
-                    width: 52,
-                    decoration: BoxDecoration(
-                      color: Color(0xFFF2BEA1),
-                      shape: BoxShape.circle,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  children: <Widget>[
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: 52,
+                        width: 52,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFF2BEA1),
+                          shape: BoxShape.circle,
+                        ),
+                        child: SvgPicture.asset('assets/icons/menu.svg'),
+                      ),
                     ),
-                    child: SvgPicture.asset('assets/icons/menu.svg'),
-                  ),
-                ],
+                  ],
             ),
+              ),
           ),
         ],
       ),
