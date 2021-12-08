@@ -82,7 +82,33 @@ class HomeScreen extends StatelessWidget {
                         border: InputBorder.none
                       ),
                     ),
-                  )
+                  ),
+                  Expanded(
+                    child: GridView.count(
+                      crossAxisCount: 2,
+                      childAspectRatio: .85,
+                      crossAxisSpacing: 20,
+                      mainAxisSpacing: 20,
+                      children: <Widget>[
+                        ProductCatgory(
+                          title: "Diet Recommendation",
+                          svgSrc: "assets/icons/Hamburger.svg"
+                        ),
+                        ProductCatgory(
+                          title: "Kegel execises",
+                          svgSrc: "assets/icons/Excrecises.svg"
+                        ),
+                        ProductCatgory(
+                          title: "Meditation",
+                          svgSrc: "assets/icons/Meditation.svg"
+                        ),
+                        ProductCatgory(
+                          title: "Yoga",
+                          svgSrc: "assets/icons/yoga.svg"
+                        )
+                      ]
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -90,5 +116,44 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class ProductCatgory extends StatelessWidget {
+  final String svgSrc;
+  final String title;
+  
+  const ProductCatgory({
+    Key? key, 
+    required this.svgSrc, required this.title,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(13),
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(0,17),
+            blurRadius: 17,
+            spreadRadius: -23,
+            color: vShadowColor
+          )
+        ]
+      ),
+      child: Column(
+        children: <Widget>[
+          const Spacer(),
+          SvgPicture.asset(svgSrc),
+          Spacer(),
+          Text(title,
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.subtitle1!.copyWith(fontSize: 15),)
+        ],
+      ),
+                      );
   }
 }
