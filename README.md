@@ -1,10 +1,14 @@
 # Daily workout
 
-Build excersice every day application.
+Build excersice everyday application.
 
 ## Getting Started
 
+Get package of project
 - flutter pub get
+
+Run project
+- flutter run
 
 ## Package
 

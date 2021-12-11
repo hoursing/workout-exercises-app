@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:workout_daily/const.dart';
+import 'package:workout_daily/screen/course_detail.dart';
 import 'package:workout_daily/widgets/button_nav_bar.dart';
 import 'package:workout_daily/widgets/category_card.dart';
 
@@ -71,20 +72,7 @@ class HomeScreen extends StatelessWidget {
                           .textTheme
                           .headline4!
                           .copyWith(fontWeight: FontWeight.w900)),
-                  Container(
-                    margin: const EdgeInsets.symmetric(vertical: 30),
-                    // ignore: prefer_const_constructors
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(29.5)),
-                    child: TextField(
-                      decoration: InputDecoration(
-                          hintText: "Search",
-                          icon: SvgPicture.asset("assets/icons/search.svg"),
-                          border: InputBorder.none),
-                    ),
-                  ),
+                  SearchBar(),
                   Expanded(
                     child: GridView.count(
                         crossAxisCount: 2,
@@ -110,7 +98,14 @@ class HomeScreen extends StatelessWidget {
                           CategoryCard(
                             title: "Yoga",
                             svgSrc: "assets/icons/yoga.svg",
-                            press: () {},
+                            press: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) {
+                                  return CouseDetail();
+                                }),
+                              );
+                            },
                           )
                         ]),
                   ),
@@ -124,23 +119,26 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class BottomNavBar extends StatelessWidget {
-  const BottomNavBar({
+class SearchBar extends StatelessWidget {
+  const SearchBar({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        height: 80,
-        color: Colors.white,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const <Widget>[
-            BottomNavItem(title: "Today", svgSrc: "assets/icons/calendar.svg", isActive: false),
-            BottomNavItem(title: "All exercises", svgSrc: "assets/icons/gym.svg", isActive: true),
-            BottomNavItem(title: "Settings", svgSrc: "assets/icons/Settings.svg", isActive: false)
-            ]));
+      margin: const EdgeInsets.symmetric(vertical: 30),
+      // ignore: prefer_const_constructors
+      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(29.5)),
+      child: TextField(
+        decoration: InputDecoration(
+            hintText: "Search",
+            icon: SvgPicture.asset("assets/icons/search.svg"),
+            border: InputBorder.none),
+      ),
+    );
   }
 }
