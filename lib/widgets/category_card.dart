@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:workout_daily/const.dart';
 
-class ProductCatgory extends StatelessWidget {
+class CategoryCard extends StatelessWidget {
   final String svgSrc;
   final String title;
   final Function() press;
 
-  const ProductCatgory({
+  const CategoryCard({
     Key? key,
     required this.svgSrc,
     required this.title,
-    required this.press,
+    required this.press
   }) : super(key: key);
 
   @override
@@ -23,6 +23,7 @@ class ProductCatgory extends StatelessWidget {
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(13),
+            // ignore: prefer_const_literals_to_create_immutables
             boxShadow: [
               BoxShadow(
                   offset: Offset(0, 17),
