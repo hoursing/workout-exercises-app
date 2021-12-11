@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:workout_daily/const.dart';
+import 'package:workout_daily/widgets/categorycard.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,6 +33,15 @@ class HomeScreen extends StatelessWidget {
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
+      bottomNavigationBar: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          height: 80,
+          color: Colors.white,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const <Widget>[
+              BottomnNavItem(), 
+              BottomnNavItem()])),
       body: Stack(
         children: <Widget>[
           Container(
@@ -66,48 +76,50 @@ class HomeScreen extends StatelessWidget {
                   Text("Hi guys",
                       style: Theme.of(context)
                           .textTheme
-                          .headline4 !
+                          .headline4!
                           .copyWith(fontWeight: FontWeight.w900)),
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 30),
+                    margin: const EdgeInsets.symmetric(vertical: 30),
+                    // ignore: prefer_const_constructors
                     padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
                     decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(29.5)
-                    ),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(29.5)),
                     child: TextField(
                       decoration: InputDecoration(
-                        hintText: "Search",
-                        icon: SvgPicture.asset("assets/icons/search.svg"),
-                        border: InputBorder.none
-                      ),
+                          hintText: "Search",
+                          icon: SvgPicture.asset("assets/icons/search.svg"),
+                          border: InputBorder.none),
                     ),
                   ),
                   Expanded(
                     child: GridView.count(
-                      crossAxisCount: 2,
-                      childAspectRatio: .85,
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 20,
-                      children: <Widget>[
-                        ProductCatgory(
-                          title: "Diet Recommendation",
-                          svgSrc: "assets/icons/Hamburger.svg"
-                        ),
-                        ProductCatgory(
-                          title: "Kegel execises",
-                          svgSrc: "assets/icons/Excrecises.svg"
-                        ),
-                        ProductCatgory(
-                          title: "Meditation",
-                          svgSrc: "assets/icons/Meditation.svg"
-                        ),
-                        ProductCatgory(
-                          title: "Yoga",
-                          svgSrc: "assets/icons/yoga.svg"
-                        )
-                      ]
-                    ),
+                        crossAxisCount: 2,
+                        childAspectRatio: .85,
+                        crossAxisSpacing: 20,
+                        mainAxisSpacing: 20,
+                        children: <Widget>[
+                          ProductCatgory(
+                            title: "Diet Recommendation",
+                            svgSrc: "assets/icons/Hamburger.svg",
+                            press: () {},
+                          ),
+                          ProductCatgory(
+                            title: "Kegel execises",
+                            svgSrc: "assets/icons/Excrecises.svg",
+                            press: () {},
+                          ),
+                          ProductCatgory(
+                            title: "Meditation",
+                            svgSrc: "assets/icons/Meditation.svg",
+                            press: () {},
+                          ),
+                          ProductCatgory(
+                            title: "Yoga",
+                            svgSrc: "assets/icons/yoga.svg",
+                            press: () {},
+                          )
+                        ]),
                   ),
                 ],
               ),
@@ -119,41 +131,21 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class ProductCatgory extends StatelessWidget {
-  final String svgSrc;
-  final String title;
-  
-  const ProductCatgory({
-    Key? key, 
-    required this.svgSrc, required this.title,
+class BottomnNavItem extends StatelessWidget {
+  const BottomnNavItem({
+    Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(13),
-        boxShadow: [
-          BoxShadow(
-            offset: Offset(0,17),
-            blurRadius: 17,
-            spreadRadius: -23,
-            color: vShadowColor
-          )
-        ]
-      ),
+    return GestureDetector(
+      onTap: () {},
       child: Column(
-        children: <Widget>[
-          const Spacer(),
-          SvgPicture.asset(svgSrc),
-          Spacer(),
-          Text(title,
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.subtitle1!.copyWith(fontSize: 15),)
-        ],
-      ),
-                      );
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            SvgPicture.asset("assets/icons/calendar.svg"),
+            Text("Today")
+          ]),
+    );
   }
 }
